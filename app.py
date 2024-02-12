@@ -52,7 +52,7 @@ def gform(cname=''):
         butshow = "enabled"
         butedit = "disabled"
         option = request.args.get("option")
-        if prev_option == 'insert':
+        if prev_option == 'insert' and option == 'save':
             strobj = request.form[cl.att[0]]
             for i in range(1,len(cl.att)):
                 strobj += ";" + request.form[cl.att[i]]
@@ -273,7 +273,7 @@ def userlogin():
             butedit = "enabled"
         elif option == 'cancel':
             pass
-        elif prev_option == 'insert':
+        elif prev_option == 'insert' and option == 'save':
             obj = Userlogin(request.form["user"],request.form["usergroup"], \
                             Userlogin.set_password(request.form["password"]))
             Userlogin.insert(obj.user)
