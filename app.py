@@ -195,6 +195,9 @@ def subform(cname=""):
                 butedit = "enabled"
             elif option == "delete":
                 obj = cl.current()
+                lines = sbl.getlines(getattr(obj, cl.att[0]))
+                for line in lines:
+                    sbl.remove(line)
                 cl.remove(obj.code)
                 if not cl.previous():
                     cl.first()
@@ -233,16 +236,18 @@ def subform(cname=""):
                 return render_template("index.html", ulogin=session.get("user"))
         prev_option = option
         obj = cl.current()
+        headers = list()
+        objl = list()
         if option == 'insert' or len(cl.lst) == 0:
+            obj = dict()
             for att in cl.att:
                 obj[att] = ""
-        headers = list()
-        for i in range(1, len(sbl.att)):
-                headers.append(sbl.att[i][1:])        
-        lines = sbl.getlines(getattr(obj, cl.att[0]))
-        objl = list()
-        for line in lines:
-            objl.append(sbl.obj[line])
+        else:
+            for i in range(1, len(sbl.att)):
+                    headers.append(sbl.att[i][1:])        
+            lines = sbl.getlines(getattr(obj, cl.att[0]))
+            for line in lines:
+                objl.append(sbl.obj[line])
         # return render_template("gform.html", butshow=butshow, butedit=butedit, cname=cname, code=code,name = name,dob=dob,salary=salary)
         return render_template("subform.html", butshow=butshow, butedit=butedit, cname=cname, obj=obj,att=cl.att,des=cl.des, ulogin=session.get("user"),objl=objl,desl=sbl.des, attl=sbl.att)
     else:
