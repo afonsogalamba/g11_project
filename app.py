@@ -59,7 +59,7 @@ def gform(cname=''):
             obj = cl.from_string(strobj)
             cl.insert(getattr(obj, cl.att[0]))
             cl.last()
-        elif prev_option == 'edit':
+        elif prev_option == 'edit' and option == 'save':
             obj = cl.current()
             for att in cl.att:
                 setattr(obj, att, request.form[att])
@@ -125,13 +125,13 @@ def person():
             butedit = "enabled"
         elif option == 'cancel':
             pass
-        elif prev_option == 'insert':
+        elif prev_option == 'insert' and option == 'save':
             strobj = request.form["code"] + ';' + request.form["name"] + ';' + \
             request.form["dob"] + ';' + request.form["salary"]
             obj = Person.from_string(strobj)
             Person.insert(obj.code)
             Person.last()
-        elif prev_option == 'edit':
+        elif prev_option == 'edit' and option == 'save':
             obj = Person.current()
             obj.code = request.form["code"]
             obj.name = request.form["name"]
@@ -177,14 +177,14 @@ def subform(cname=""):
         butshow = "enabled"
         butedit = "disabled"
         option = request.args.get("option")
-        if prev_option == 'insert':
+        if prev_option == 'insert' and option == 'save':
             strobj = request.form[cl.att[0]]
             for i in range(1,len(cl.att)):
                 strobj += ";" + request.form[cl.att[i]]
             obj = cl.from_string(strobj)
             cl.insert(getattr(obj, cl.att[0]))
             cl.last()
-        elif prev_option == 'edit':
+        elif prev_option == 'edit' and option == 'save':
             obj = cl.current()
             for att in cl.att:
                 setattr(obj, att, request.form[att])
@@ -283,7 +283,7 @@ def userlogin():
                             Userlogin.set_password(request.form["password"]))
             Userlogin.insert(obj.user)
             Userlogin.last()
-        elif prev_option == 'edit':
+        elif prev_option == 'edit' and option == 'save':
             obj = Userlogin.current()
             if group == "admin":
                 obj.usergroup = request.form["usergroup"]
