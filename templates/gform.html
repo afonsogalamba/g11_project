@@ -18,9 +18,14 @@
         <br><br>
             <form id="form" action="/gform/{{cname}}?option=save" method="post">
                 {% for key in att %}
-                  <label for="{{key}}">{{des[loop.index-1]}}:</label>
-                  <input type="text" {{butedit}} id="{{key}}" name="{{key}}" value="{{obj[key]}}" size="30"/>
-                  <br><br>
+                    {% if loop.index == 1 %}
+                      <label for="{{key}}">{{des[loop.index-1]}}:</label>
+                      <input type="text" readonly id="{{key}}" name="{{key}}" value="{{obj[key]}}" size="4"/>
+                    {% else %}                    
+                      <label for="{{key}}">{{des[loop.index-1]}}:</label>
+                      <input type="text" {{butedit}} id="{{key}}" name="{{key}}" value="{{obj[key]}}" size="30"/>
+                    {% endif %}
+                    <br><br>
                 {% endfor %}
         </form>
         <br>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flask demo PCII</title>
+    <title>G11 Project</title>
     {% block title %}
     {% endblock %}
   </head>
@@ -14,11 +14,10 @@
                     <li><a class="button" href="/login">Login</a></li>
                 {% else %}
                     <li><a class="button" href="/logoff">Logoff</a></li>
-                    <li><a class="button" href="/Person">Person</a></li>
-                    <li><a class="button" href="/gform/Customer">Customer</a></li>
+                    <li><a class="button" href="/Store">Store</a></li>
+                    <li><a class="button" href="/gform/Suplier">Supplier</a></li>
+                    <li><a class="button" href="/gform/Stock">Stock</a></li>
                     <li><a class="button" href="/gform/Product">Product</a></li>
-                    <li><a class="button" href="/gform/CustomerOrder">Order</a></li>
-                    <li><a class="button" href="/subform/CustomerOrder_OrderProduct?option=''">Order lines</a></li>
                     <li><a class="button" href="/Userlogin">Users</a></li>
                     <li><a class="button" style="color:lightblue">User: {{ulogin}}</a></li>
                 {% endif %}
