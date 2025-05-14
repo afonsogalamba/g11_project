@@ -37,9 +37,6 @@ def chklogin():
         session["user"] = user
         return render_template("index.html", ulogin=session.get("user"))
     return render_template("login.html", user=user, password = password, ulogin=session.get("user"),resul = resul)
-@app.route("/Store", methods=["post","get"])
-def store():
-    return apps_store()
 @app.route("/gform/<cname>", methods=["post","get"])
 def gform(cname):
     return apps_gform(cname)
