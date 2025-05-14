@@ -13,7 +13,7 @@ class Stock(Gclass):
     pos = 0
     sortkey = ''
     # Attribute names list, identifier attribute must be the first one and callled 'id'
-    att = ['_id','_store__id','_product_id', '_level','_restock_date']
+    att = ['_id','_store_id','_product_id', '_level','_restock_date']
     # Class header title
     header = 'Stock'
     # field description for use in, for example, input form
@@ -32,7 +32,7 @@ class Stock(Gclass):
                 self._store_id = store_id
                 self._product_id = product_id
                 self._level= level
-                self._restock_date = datetime.strptime(restock_date, "%Y-%m-%d")
+                self._restock_date = datetime.datetime.strptime(restock_date, "%d/%m/%Y")
                 Stock.obj[id] = self
                 Stock.lst.append(id)
             else:
@@ -41,6 +41,9 @@ class Stock(Gclass):
             print('Store', store_id, ' not found')
 
     # id property getter method
+    @property
+    def id(self):
+        return self._id
     @property
     def store_id(self):
         return self._store_id

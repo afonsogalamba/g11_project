@@ -13,8 +13,8 @@ from subs.apps_userlogin import apps_userlogin
 app = Flask(__name__)
 
 Store.read(filename + 'loja.db')
-Stock.read(filename + 'loja.db')
 Product.read(filename + 'loja.db')
+Stock.read(filename + 'loja.db')
 Suplier.read(filename + 'loja.db')
 Userlogin.read(filename + 'loja.db')
 app.secret_key = 'BAD_SECRET_KEY'
