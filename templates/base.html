@@ -1,28 +1,119 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>G11 Project</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+            height: 100%;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #1e293b;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-button {
+            color: white;
+            text-decoration: none;
+            padding: 0.4rem 0.75rem;
+            background-color: #3b82f6;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #2563eb;
+        }
+
+        .user-label {
+            color: #93c5fd;
+            font-weight: 500;
+        }
+
+        /* Content */
+        .content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+    </style>
+
     {% block title %}
     {% endblock %}
-  </head>
-    <body>
-        <nav>
-            <ul class="menu">
-                {% if ulogin == None %}
-                    <li><a class="button" href="/login">Login</a></li>
-                {% else %}
-                    <li><a class="button" href="/logoff">Logoff</a></li>
-                    <li><a class="button" href="/gform/Suplier">Supplier</a></li>
-                    <li><a class="button" href="/subform/Store_Stock?option=''">Stock</a></li>
-                    <li><a class="button" href="/gform/Product">Product</a></li>
-                    <li><a class="button" href="/Userlogin">Users</a></li>
-                    <li><a class="button" style="color:lightblue">User: {{ulogin}}</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    {% block content %}
-    {% endblock %}
-  </body>
-</html>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">G11 Project</div>
+            <nav>
+                <ul class="nav-links">
+                    {% if ulogin == None %}
+                        <li><a href="/login" class="nav-button">Login</a></li>
+                    {% else %}
+                        <li><a href="/logoff" class="nav-button">Logoff</a></li>
+                        <li><a href="/gform/Suplier" class="nav-button">Supplier</a></li>
+                        <li><a href="/subform/Store_Stock?option=''" class="nav-button">Stock</a></li>
+                        <li><a href="/gform/Product" class="nav-button">Product</a></li>
+                        <li><a href="/Userlogin" class="nav-button">Users</a></li>
+                        <li><span class="user-label">User: {{ ulogin }}</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
