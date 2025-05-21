@@ -4,7 +4,7 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = 'empty-project-type'
-recent_files = ['templates\\store.html', 'app.py', 'static\\css\\main.css', 'templates\\index.html', 'subs\\apps_store.py', 'templates\\base.html', 'templates\\userlogin.html', 'subs\\apps_gform.py', 'subs\\apps_subform.py', 'subs\\apps_userlogin.py', 'classes\\userlogin.py', 'templates\\gform.html', 'templates\\subform.html', 'templates\\login.html', 'classes\\product.py', 'classes\\stock.py', 'classes\\store.py', 'classes\\suplier.py', 'static\\css\\main1.css', 'datafile.py', '.gitignore', 'git.txt']
+recent_files = ['templates\\store.html', 'static\\css\\main.css', 'templates\\index.html', 'subs\\apps_store.py', 'templates\\base.html', 'templates\\userlogin.html', 'subs\\apps_gform.py', 'subs\\apps_subform.py', 'subs\\apps_userlogin.py', 'classes\\userlogin.py', 'templates\\gform.html', 'templates\\subform.html', 'templates\\login.html', 'classes\\product.py', 'classes\\stock.py', 'classes\\store.py', 'classes\\suplier.py', 'static\\css\\main1.css', 'datafile.py', '.gitignore', 'git.txt', 'classes\\gclass.py', 'app.py', 'subs\\apps_plot.py', 'templates\\plot.html']
 
 [main]
 version = 0.2.0

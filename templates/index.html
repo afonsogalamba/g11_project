@@ -2,104 +2,122 @@
 
 {% block title %}
 <style>
-    .page-wrapper {
+    .hero-section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-height: 70vh;
-        padding-top: 3rem;
-        font-family: Arial, sans-serif;
+        justify-content: center;
+        padding: 6rem 2rem;
+        background: url("{{ url_for('static', filename='images/Warehouse.jpg') }}") center/cover no-repeat;
+        text-align: center;
+        min-height: 60vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #ffffff;
+        position: relative;
     }
 
-    .card {
-        background-color: #ffffff;
-        padding: 2rem;
-        border-radius: 1rem;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-        text-align: center;
+    .hero-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.55);
+        z-index: 0;
+    }
+
+    .hero-title,
+    .hero-subtitle {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
         max-width: 700px;
-        width: 100%;
-        margin-bottom: 2rem;
     }
 
-    .title {
-        font-size: 2rem;
-        font-weight: 600;
-        color: #1f2937;
-    }
-
-    .subtitle {
-        margin-top: 1rem;
-        font-size: 1.1rem;
-        color: #6b7280;
-    }
-
-    .image-grid {
+    .features-section {
+        padding: 3rem 2rem;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-        width: 100%;
-        max-width: 900px;
-    }
-
-    .svg-icon {
-        width: 100%;
-        max-width: 80px;
-        height: auto;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        background-color: #ffffff;
+        max-width: 1200px;
         margin: 0 auto;
-        display: block;
     }
 
-    .caption {
-        font-size: 0.95rem;
-        color: #4b5563;
-        margin-top: 0.75rem;
-        text-align: center;
-    }
-
-    .icon-card {
+    .feature-card {
         background: #f9fafb;
         border-radius: 1rem;
-        padding: 1.5rem;
+        padding: 2rem;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
         text-align: center;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .feature-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 1rem;
+        color: #2563eb;
+    }
+
+    .feature-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #111827;
+    }
+
+    .feature-description {
+        font-size: 0.95rem;
+        color: #374151;
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="page-wrapper">
-    <div class="card">
-        <h1 class="title">Stock Operations</h1>
-        <p class="subtitle">Manage your store and supply operations visually and efficiently.</p>
+<div class="hero-section">
+    <h1 class="hero-title">Smart Stock & Logistics Platform</h1>
+    <p class="hero-subtitle">Streamline your warehouse, supply chain, and store management with an intuitive and integrated dashboard.</p>
+</div>
+
+<div class="features-section">
+    <div class="feature-card">
+        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 10l9-6 9 6M4 10v10a1 1 0 001 1h3m10-11v10a1 1 0 01-1 1h-3m-6 0h6" />
+        </svg>
+        <div class="feature-title">Warehouse Logistics</div>
+        <p class="feature-description">Track inventory, incoming shipments, and storage in real time across multiple warehouses.</p>
     </div>
 
-    <div class="image-grid">
-        <div class="icon-card">
-            <!-- Warehouse Icon -->
-            <svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 10l9-6 9 6M4 10v10a1 1 0 001 1h3m10-11v10a1 1 0 01-1 1h-3m-6 0h6" />
-            </svg>
-            <div class="caption">Warehouse Logistics</div>
-        </div>
-        <div class="icon-card">
-            <!-- Supply Chain Icon -->
-            <svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 17v-2a4 4 0 014-4h2a4 4 0 004 4v2M3 7h6m6 0h6M9 3v4m6-4v4" />
-            </svg>
-            <div class="caption">Supply Chain</div>
-        </div>
-        <div class="icon-card">
-            <!-- Store Management Icon -->
-            <svg class="svg-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-            </svg>
-            <div class="caption">Store Management</div>
-        </div>
+    <div class="feature-card">
+        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 17v-2a4 4 0 014-4h2a4 4 0 004 4v2M3 7h6m6 0h6M9 3v4m6-4v4" />
+        </svg>
+        <div class="feature-title">Supply Chain</div>
+        <p class="feature-description">Coordinate suppliers, deliveries, and stock replenishment efficiently and transparently.</p>
+    </div>
+
+    <div class="feature-card">
+        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+        </svg>
+        <div class="feature-title">Store Management</div>
+        <p class="feature-description">Oversee retail operations, manage sales data, and optimize in-store inventory flows.</p>
     </div>
 </div>
 {% endblock %}
+

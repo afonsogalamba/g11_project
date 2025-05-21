@@ -5,20 +5,32 @@
 {% endblock %}
 
 {% block content %}
-    <div class = "dados">
-        <br><br>
-        <h1>Login</h1>
-        <br>
-        <form id="form" action="/chklogin" method="post">
-            <label for="user">User:</label>
-            <input type="text" id="user" name="user"  value = "{{user}}" size="30"/>
-            <br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" value = "{{password}}" size="30"/>
-            <br><br>
-            <button type="submit" class="button1">Login</button>
-        </form>
-        <br><br>
-        <h3 style="color: red;">{{resul}}</h3>
+    <div class="login-container">
+        <div class="login-card">
+            <form id="form" action="/chklogin" method="post" class="login-form">
+                <div class="input-group">
+                    <label for="user">Username</label>
+                    <input type="text" id="user" name="user" value="{{user}}" placeholder="Enter your username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" value="{{password}}" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="login-button cute-button">
+                    <span>Sign In</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+                    </svg>
+                </button>
+            </form>
+
+            {% if resul %}
+            <div class="login-message error">
+                {{resul}}
+            </div>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}

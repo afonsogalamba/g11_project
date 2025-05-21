@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="dados" style="text-align: center; padding: 40px 20px;">
+        <h2>Explore This Interesting Graph</h2>
+        <p>Analyze the data insights displayed in the chart below.</p>
+        <div style="margin-top: 30px;">
+            <img src="data:image/png;base64,{{ image }}" alt="My plot" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+        </div>
+    </div>
+
+{% endblock %}
