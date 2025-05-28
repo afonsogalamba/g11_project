@@ -9,7 +9,7 @@ from subs.apps_store import apps_store
 from subs.apps_gform import apps_gform 
 from subs.apps_subform import apps_subform 
 from subs.apps_userlogin import apps_userlogin
-from subs.apps_plot import apps_plot
+from subs.apps_plot import apps_plot, apps_update_plot
 
 app = Flask(__name__)
 
@@ -44,9 +44,13 @@ def gform(cname):
 @app.route("/subform/<cname>", methods=["post","get"])
 def subform(cname):
     return apps_subform(cname)
-@app.route("/plot", methods=["post","get"])
+@app.route("/plot", methods=["GET"])
 def plot():
     return apps_plot()
+
+@app.route("/update_plot", methods=["POST"])
+def update_plot():
+    return apps_update_plot()
 @app.route("/Userlogin", methods=["post","get"])
 def userlogin():
     return apps_userlogin()

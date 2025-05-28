@@ -9,9 +9,42 @@
     <div class="dados" style="text-align: center; padding: 40px 20px;">
         <h2>Explore This Interesting Graph</h2>
         <p>Analyze the data insights displayed in the chart below.</p>
+
+        <!-- Dropdown to select store -->
+        <div style="margin-top: 20px;">
+            <label for="storeSelect" style="font-weight: bold;">Select Store:</label>
+            <select id="storeSelect" style="padding: 8px 12px; border-radius: 6px; margin-left: 10px;">
+                <option value="">All Stores</option>
+                {% for s in stores %}
+                    <option value="{{ s }}">{{ s }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Chart Image -->
         <div style="margin-top: 30px;">
-            <img src="data:image/png;base64,{{ image }}" alt="My plot" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+            <img id="stockImage"
+                 src="data:image/png;base64,{{ image }}"
+                 alt="Stock Chart"
+                 style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
         </div>
     </div>
+
+    <!-- jQuery for AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#storeSelect').on('change', function () {
+            const selectedStore = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "/update_plot",
+                contentType: "application/json",
+                data: JSON.stringify({ store: selectedStore }),
+                success: function (data) {
+                    $('#stockImage').attr('src', 'data:image/png;base64,' + data.image);
+                }
+            });
+        });
+    </script>
 
 {% endblock %}
